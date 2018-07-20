@@ -1,0 +1,372 @@
+<fieldset class="layui-elem-field layui-field-title">
+    <legend><a name="onnav">{{ d.tagname }}&nbsp;-&nbsp;{{ d.mmeta.summary }}</a></legend>
+    <div class="layui-field-box">
+        <div class="layui-tab layui-tab-brief" lay-filter="apiDefine">
+            <ul class="layui-tab-title api-tab-title">
+                <li class="layui-this">接口定义</li>
+                <li>接口调试</li>
+            </ul>
+            <div class="layui-tab-content main-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-collapse">
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">接口概要</h2>
+                            <div class="layui-colla-content layui-show">
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col width="180">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td>接口方式</td>
+                                        <td><span class="api-badge">{{ d.dhttpmethod.toUpperCase() }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>接口URL</td>
+                                        <td>{{ d.dpath }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>接口名称</td>
+                                        <td>{{ d.mmeta.summary }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>接口说明</td>
+                                        <td>{{ d.mmeta.description }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">接口参数</h2>
+                            <div class="layui-colla-content">
+                                {{# if(d.mmeta.hasOwnProperty("parameters")) {}}
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col width="120">
+                                        <col width="120">
+                                        <col width="80">
+                                        <col width="80">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>类型</th>
+                                        <th>必须</th>
+                                        <th>位置</th>
+                                        <th>说明</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{# layui.each(d.mmeta.parameters, function(i, param){ }}
+                                    <tr>
+                                        <td>{{ param.name }}</td>
+                                        <td>{{ param.showtype }}</td>
+                                        <td><span class="api-badge">{{ param.required }}</span></td>
+                                        <td><span class="api-badge">{{ param.in }}</span></td>
+                                        <td>{{ param.description }}</td>
+                                    </tr>
+                                    {{# }); }}
+                                    </tbody>
+                                </table>
+                                {{# } else { }}
+                                <span class="data-none">无</span>
+                                {{# } }}
+                            </div>
+                        </div>
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">接口响应</h2>
+                            <div class="layui-colla-content">
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col width="120">
+                                        <col width="600">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>响应码</th>
+                                        <th>响应说明</th>
+                                        <th>响应数据</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{# layui.each(d.mmeta.responses, function(status, response){ }}
+                                    <tr>
+                                        <td rowspan="{{ response.hasOwnProperty('headers')?2:1 }}">{{ status }}</td>
+                                        <td>{{ response.description }}</td>
+                                        <td>{{ response.showtype }}</td>
+                                    </tr>
+                                    {{# if(response.hasOwnProperty("headers")){ }}
+                                    <tr class="api-response-header">
+                                        <td colspan="2">
+                                            <fieldset class="layui-elem-field layui-field-title">
+                                                <legend>返回Http头</legend>
+                                            </fieldset>
+                                            <table class="layui-table" lay-skin="nob">
+                                                <colgroup>
+                                                    <col>
+                                                    <col>
+                                                    <col>
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th>名称</th>
+                                                    <th>类型</th>
+                                                    <th>说明</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{# layui.each(response.headers, function(hname, hmeta){ }}
+                                                <tr>
+                                                    <td>{{ hname }}</td>
+                                                    <td>{{ hmeta.showtype }}</td>
+                                                    <td>{{ hmeta.description }}</td>
+                                                </tr>
+                                                {{# }); }}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    {{# } }}
+                                    {{# }); }}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {{# if(!layui.jquery.isEmptyObject(d.mmeta.models)){ }}
+                        <div class="layui-colla-item depend-model">
+                            <h2 class="layui-colla-title">依赖数据</h2>
+                            <div class="layui-colla-content">
+                                {{# layui.each(d.mmeta.models, function(name, model){ }}
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col width="120">
+                                        <col width="200">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th colspan="5" mid="{{ name }}">{{ name }}</th>
+                                    </tr>
+                                    {{# if(model.hasOwnProperty("properties")){ }}
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>类型</th>
+                                        <th>说明</th>
+                                    </tr>
+                                    {{# } }}
+                                    </thead>
+                                    <tbody>
+                                    {{# if(model.hasOwnProperty("properties")){ }}
+                                    {{# layui.each(model.properties, function(prop, propmeta){ }}
+                                    <tr>
+                                        <td>{{ prop }}</td>
+                                        <td>{{ propmeta.showtype }}</td>
+                                        <td>{{ propmeta.description || "" }}</td>
+                                    </tr>
+                                    {{# }); }}
+                                    {{# }else{ }}
+                                    <tr>
+                                        <td colspan="5">无</td>
+                                    </tr>
+                                    {{# } }}
+                                    </tbody>
+                                </table>
+                                {{# }); }}
+                            </div>
+                        </div>
+                        {{# } }}
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-form layui-form-pane">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label lal-api-url">{{ d.dhttpmethod.toUpperCase() }}</label>
+                            <div class="layui-input-inline ipt-api-url">
+                                <input type="text" autocomplete="off" class="layui-input" value="{{ d.dpath }}" disabled/>
+                            </div>
+                            <div class="layui-input-inline">
+                                <button class="layui-btn" onclick="sendRequest()">发送请求</button>
+                            </div>
+                        </div>
+                    </div>
+                    <fieldset class="layui-elem-field request-param">
+                        <legend>请求参数</legend>
+                        <div class="layui-field-box">
+                            {{# if(d.mmeta.hasOwnProperty("parameters")) {}}
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="120">
+                                    <col width="100">
+                                    <col width="80">
+                                    <col width="80">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>类型</th>
+                                    <th>必须</th>
+                                    <th>位置</th>
+                                    <th>值</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{# layui.each(d.mmeta.parameters, function(i, param){ }}
+                                <tr>
+                                    <td>{{ param.name }}</td>
+                                    <td>{{ param.showtype }}</td>
+                                    <td><span class="api-badge">{{ param.required }}</span></td>
+                                    <td><span class="api-badge">{{ param.in }}</span></td>
+                                    {{# if(param.in == "body" && param.showtype != "string"){ }}
+                                    <td>
+                                        <textarea rows="10" dreq="{{ param.required }}" dtype="{{ param.in.toLowerCase() }}" dprop="{{ param.name }}" placeholder="请输入内容" class="layui-textarea">{{ layui.nswagger.jsonmock.mock(param.itemtype) }}</textarea>
+                                    </td>
+                                    {{# } else if(param.in == "formData" && param.type == "file") { }}
+                                    <td>
+                                        <button dreq="{{ param.required }}" dtype="{{ param.in.toLowerCase() }}" dprop="{{ param.name }}" type="button" class="layui-btn btnUpload"><i class="layui-icon">&#xe67c;</i>上传文件</button>
+                                    </td>
+                                    {{# } else { }}
+                                    <td>
+                                        <input dreq="{{ param.required }}" dtype="{{ param.in.toLowerCase() }}" dprop="{{ param.name }}" type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" value="{{ param.default || '' }}"/>
+                                    </td>
+                                    {{# } }}
+                                </tr>
+                                {{# }); }}
+                                </tbody>
+                            </table>
+                            {{# } else { }}
+                            <span class="data-none">无</span>
+                            {{# } }}
+                        </div>
+                    </fieldset>
+                    <fieldset class="layui-elem-field request-console">
+                        <legend>控制台</legend>
+                        <div class="layui-field-box"></div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script>
+
+    var $ = layui.jquery,
+        layer = layui.layer,
+        element = layui.element,
+        upload = layui.upload,
+        mainOffsetTop = $(".main-content").offset().top;
+
+    var formUpload = upload.render({
+        elem: ".btnUpload",
+        auto: false
+    });
+
+    element.on('tab(apiDefine)', function (data) {
+        scrollToEl(0);
+    });
+
+    function scrollToEl(top) {
+        $(".main-content").scrollTop(top - mainOffsetTop + $(".main-content").scrollTop());
+    }
+
+    function gotoModel(mid) {
+        $(".api-tab-title :first").click();
+        $(".depend-model .layui-colla-content").addClass("layui-show");
+        scrollToEl($("th[mid='" + mid + "'").offset().top);
+    }
+
+    function consoleLog(msg) {
+        $(".request-console .layui-field-box").append("<p>[" + new Date().toLocaleString() + "] " + msg + "</p>");
+        scrollToEl(10000);
+    }
+
+    function sendRequest() {
+        try {
+            $(".request-console .layui-field-box").empty();
+            $(".request-console").show();
+            consoleLog("开始发送请求");
+
+            var headers = {}, paths = {}, pbody, querys = {};
+            var durl = "{{ d.apidoc.schemes[0] }}" + "://" + "{{ d.apidoc.host + (d.apidoc.basePath.length == 1?'':d.apidoc.basePath) + d.dpath }}";
+            var httpmethod = "{{ d.dhttpmethod.toUpperCase() }}";
+            var checkok = true;
+            var bodydata = null;
+            var fileProp;
+            $.each($(".request-param input, .request-param textarea"), function (i, item) {
+                if (!checkok) {
+                    return;
+                }
+                var pval = $(item).val();
+                var dtype = $(item).attr("dtype");
+                var dprop = $(item).attr("dprop");
+                var dreq = $(item).attr("dreq");
+                if ($(item).attr("type") == "file") {
+                    btnFile = $(item).prev();
+                    dtype = $(btnFile).attr("dtype");
+                    dprop = $(btnFile).attr("dprop");
+                    dreq = $(btnFile).attr("dreq");
+                    fileProp = dprop;
+                }
+                if (dreq == "true" && pval == "") {
+                    checkok = false;
+                    layer.msg("参数:" + dprop + "是必须的，请填写参数", {icon: 5});
+                    return;
+                }
+                if (dtype == "header") {
+                    headers[dprop] = pval;
+                } else if (dtype == "path") {
+                    paths[dprop] = pval;
+                } else if (dtype == "body") {
+                    bodydata = JSON.parse(pval);
+                } else {
+                    querys[dprop] = pval;
+                }
+                $.each(paths, function (pvar, pval) {
+                    durl = durl.replace("{" + pvar + "}", pval);
+                });
+            });
+            if (!checkok) {
+                return;
+            }
+            layer.load();
+            if ($(".request-param .layui-upload-file").length <= 0) {
+                var ajaxopt = {
+                    method: "{{ d.dhttpmethod.toUpperCase() }}",
+                    data: bodydata ? JSON.stringify(bodydata) : querys,
+                    headers: headers,
+                    complete: function (jqXHR) {
+                        layer.closeAll('loading');
+                        consoleLog("请求远程 " + '"' + httpmethod + " " + durl + ' ' + jqXHR['status'] + " " + jqXHR['statusText'] + '"');
+                        consoleLog("请求远程返回头 " + jqXHR.getAllResponseHeaders());
+                        if (jqXHR.hasOwnProperty("responseJSON")) {
+                            consoleLog("服务器返回JSON：" + JSON.stringify(jqXHR["responseJSON"]));
+                        } else if (jqXHR.hasOwnProperty("responseText")) {
+                            consoleLog("服务器返回文本：" + JSON.stringify(jqXHR["responseText"]));
+                        }
+                    },
+                    timeout: 30000
+                };
+                bodydata && (ajaxopt.contentType = "application/json; charset=utf-8");
+                $.ajax(durl, ajaxopt);
+            } else {
+                formUpload.config.field = fileProp;
+                formUpload.config.before = function () {
+                    formUpload.config.url = durl;
+                    formUpload.config.data = querys;
+                };
+                formUpload.config.done = function (res) {
+                    layer.closeAll('loading');
+                    consoleLog("请求远程 " + '"' + httpmethod + " " + durl + '"');
+                    consoleLog("服务器返回文本：" + JSON.stringify(res));
+                };
+                formUpload.upload();
+            }
+        } catch (e) {
+            consoleLog("请求处理异常：" + e);
+        }
+    }
+</script>

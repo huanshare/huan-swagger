@@ -1,0 +1,17 @@
+---
+server:
+  port: 8101
+---
+spring:
+  application:
+    name: swagger-ui
+# Swagger设置
+swagger:
+  enable: true
+  version: 1.0
+  title: 测试项目
+  description: 测试项目，查询demo
+  contact:
+    name: huanshare
+    url: http://huanshare.com
+    mail: huanshare@live.com

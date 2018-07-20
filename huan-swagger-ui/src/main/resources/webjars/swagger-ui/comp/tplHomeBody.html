@@ -1,0 +1,86 @@
+<fieldset class="layui-elem-field layui-field-title">
+    <legend><a href="javascript:;">首页</a></legend>
+    <div class="layui-field-box main-content">
+        <div class="layui-collapse">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">API概要</h2>
+                <div class="layui-colla-content layui-show">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="180">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>标题</td>
+                            <td>{{ d.info.title }}</td>
+                        </tr>
+                        <tr>
+                            <td>描述</td>
+                            <td>{{ d.info.description }}</td>
+                        </tr>
+                        <tr>
+                            <td>API版本</td>
+                            <td>{{ d.info.version }}</td>
+                        </tr>
+                        <tr>
+                            <td>联系方式</td>
+                            <td class="api-inner-td">
+                                <table class="layui-table api-inner-table">
+                                    <colgroup>
+                                        <col width="120">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td>姓名</td>
+                                        <td>{{ d.info.contact.name || "" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>邮箱</td>
+                                        <td>
+                                            <a href="mailto:{{ d.info.contact.email }}">{{ d.info.contact.email || "" }}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>网址</td>
+                                        <td>
+                                            <a href="{{ d.info.contact.url || '' }}" target="_blank">{{ d.info.contact.url || "" }}</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">系统信息</h2>
+                <div class="layui-colla-content layui-show">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="180">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>网站地址</td>
+                            <td>{{ d.host }}</td>
+                        </tr>
+                        <tr>
+                            <td>ContextPath</td>
+                            <td>{{ d.basePath }}</td>
+                        </tr>
+                        <tr>
+                            <td>Swagger版本</td>
+                            <td>{{ d.swagger }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

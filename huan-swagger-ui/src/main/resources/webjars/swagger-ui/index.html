@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API文档加载中</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="assets/css/swagger-ui.css">
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header header header-top">
+        <div class="layui-main">
+            <a class="logo" href="javascript:;"><img src="assets/img/logo.png" alt="logo"/></a>
+        </div>
+        <div class="layui-form header-form api-quick"></div>
+        <div class="layui-form header-form api-url">
+            <input id="iptApiUrl" type="url" placeholder="输入API配置的地址，默认：{location.protocol}//{location.host}/v2/api-docs" autocomplete="off" class="layui-input"/>
+            <i class="layui-icon btn-clearurl">&#x1006;</i>
+            <i class="layui-icon btn-gourl">&#x1002;</i>
+        </div>
+    </div>
+    <div class="api-main"></div>
+</div>
+<script src="layui/layui.js"></script>
+<script src="assets/js/swagger-ui.js"></script>
+</body>
+</html>

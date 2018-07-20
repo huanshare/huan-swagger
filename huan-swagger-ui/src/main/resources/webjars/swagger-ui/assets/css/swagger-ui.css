@@ -1,0 +1,34 @@
+.header-top{ height:60px; border-bottom:none }
+.header-top .logo{ position:absolute; top:10px; left:0; }
+.header-top .logo img{ width:150px; height:40px }
+.header{ height:59px; border-bottom:1px solid #404553; background-color:#393d49 }
+.api-quick{ position:absolute; width:200px; left:200px; top:16px; }
+.api-url{ position:absolute; width:500px; right:20px; top:16px; }
+.api-url .btn-gourl{ position:absolute; right:10px; top:8px; color:#999999; cursor:pointer; }
+.api-url .btn-clearurl{ position:absolute; right:30px; top:8px; color:#999999; cursor:pointer; display:none; }
+.api-quick input, .api-url input{ height:30px; line-height:30px; padding-left:12px; padding-right:50px; background-color:rgba(255, 255, 255, .05); border:none 0; color:#ffffff; font-size:12px; }
+.left-nav .layui-nav-item{ line-height:40px; }
+.left-nav .layui-nav-item .nav-title{ padding:0 60px 0 10px }
+.api-main .main-body{ position:fixed; left:200px; right:0; padding:10px; top:60px; bottom:0; }
+.api-main .main-body li{ width:100px; }
+.api-main .main-body .main-content{ position:absolute; overflow-y:auto; bottom:10px; top:60px; left:10px; right:10px; padding-top:0; padding-bottom:0; }
+.api-main .main-body .layui-tab-content{ top:120px; padding-left:0; padding-right:0; padding-bottom:0; }
+.api-main .main-body .layui-tab-content a{ color:#009688; }
+.api-main .main-body .layui-colla-content{ padding:0 10px; }
+.api-main .main-body .request-param{ padding:0 10px; margin-bottom:0; }
+.api-main .main-body .request-param .layui-field-box{ padding:0; }
+.api-main .main-body .request-param legend, .api-main .main-body .request-console legend{ font-size:14px; font-weight:400; }
+.api-main .main-body .lal-api-url{ background-color:#009688; font-weight:500; color:#ffffff; }
+.api-main .main-body .ipt-api-url{ width:500px; }
+.api-main .main-body .request-console{ display:none; margin-bottom:0; margin-top:10px; }
+.api-main .main-body .request-console .layui-field-box{ padding:10px; color:green; }
+.api-main .main-body .request-console .layui-field-box p{ font-size:12px; line-height:20px; }
+.layui-table .api-inner-td{ padding:0; }
+.api-inner-td .api-inner-table{ margin:0; }
+.api-inner-td .api-inner-table td{ border-top:none; border-left:none; }
+.api-badge{ display:inline-block; min-width:10px; padding:.25em .4em; font-size:0.8rem; font-weight:500; color:#ffffff; line-height:1; vertical-align:baseline; white-space:nowrap; text-align:center; background-color:#009688; border-radius:2px; }
+.left-nav .api-badge{ position:absolute; right:30px; top:10px; }
+.data-none{ padding:10px; display:block; }
+.api-response-header legend{ font-size:16px; }
+.api-response-header .layui-field-title{ margin-bottom:0; }
+
