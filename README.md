@@ -2,9 +2,9 @@
 ## 项目结构
  huan-swagger-core  swagger核心组件封装
  
- huan-swagger-ui    swagger UI页面，作为一个第三方服务来渲染接口，用来渲染远程服务器的接口说明  10.6.51.135:8102
+ huan-swagger-ui    swagger UI页面，作为一个第三方服务来渲染接口，用来渲染远程服务器的接口说明  （10.6.51.135:8102）
  
- huan-swagger-test  swagger 微服务测试页面  10.6.51.135:8101
+ huan-swagger-test  swagger 微服务测试页面  （10.6.51.135:8101）
  
  访问形式：http://10.6.51.135:8102/webjars/swagger-ui/index.html#10.6.51.135:8101
 
@@ -32,4 +32,4 @@
   
   如果微服务多的话，这也算是个不错的方案
   
-    
+   小伙伴的地址（https://github.com/ohcomeyes/swagger-ui-layer）
