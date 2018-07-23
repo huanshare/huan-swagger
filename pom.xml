@@ -10,7 +10,11 @@
 
     <name>huan-swagger</name>
     <description>Demo project for Spring Boot</description>
-
+    <modules>
+        <module>huan-swagger-core</module>
+        <module>huan-swagger-ui</module>
+        <module>huan-swagger-test</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
