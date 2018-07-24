@@ -17,9 +17,9 @@
  2、 pom依赖
   
     <dependency>
-        <groupId>com.huanshare</groupId>
+        <groupId>com.github.huanshare</groupId>
         <artifactId>huan-swagger-core</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </dependency>
 
  3、页面访问：UI服务器地址/webjars/swagger-ui/index.html#API-服务器地址

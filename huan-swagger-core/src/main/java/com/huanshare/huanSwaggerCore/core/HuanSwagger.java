@@ -23,15 +23,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class HuanSwagger {
     @Value("${swagger.enable:false}")
     boolean enable;
-    @Value("${swagger.title:漫道API查看器}")
+    @Value("${swagger.title:API查看器}")
     String title;
     @Value("${swagger.description:API服务的说明，请在配置文件中说明服务的作用}")
     String description;
-    @Value("${swagger.contact.name:行者}")
+    @Value("${swagger.contact.name:huanshare}")
     String contactName;
-    @Value("${swagger.contact.url:www.mandao.com}")
+    @Value("${swagger.contact.url:www.huanshare.com}")
     String contactUrl;
-    @Value("${swagger.contact.mail:xingzhe@mandao.com}")
+    @Value("${swagger.contact.mail:huanshare@live.com}")
     String contactMail;
     @Value("${swagger.version:0.0.0}")
     String version;
