@@ -34,4 +34,4 @@
   
   如果微服务多的话，这也算是个不错的方案
   
-   小伙伴的地址（https://github.com/ohcomeyes/swagger-ui-layer）
+   小伙伴的地址（https://github.com/ohcomeyes/swagger-ui-layer ）
