@@ -24,6 +24,8 @@
 
  3、页面访问：UI服务器地址/webjars/swagger-ui/index.html#API-服务器地址
  
+ 4、具体使用方式，请参考 huan-swagger-test
+ 
  ## 特点
   
   原来看过别人的源码，直接将swagger 部署在API服务上，无法实现API，UI分离
