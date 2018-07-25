@@ -7,7 +7,8 @@
  huan-swagger-test  swagger 微服务测试页面  （10.6.51.135:8101）
  
  访问形式：http://10.6.51.135:8102/webjars/swagger-ui/index.html#10.6.51.135:8101
-
+ 
+ demo实例：http://106.12.9.238:8080/webjars/swagger-ui/index.html#106.12.9.238:8081
 
 ## 使用说明
  1、 spring boot项目启动项添加：
