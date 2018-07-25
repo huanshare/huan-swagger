@@ -18,6 +18,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //将所有/static/** 访问都映射到classpath:/static/ 目录下
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/webjars/");
+        registry.addResourceHandler("/api-doc.html").addResourceLocations("classpath:/api-doc.html");
 
     }
 }

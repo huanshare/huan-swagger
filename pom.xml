@@ -14,6 +14,7 @@
         <module>huan-swagger-core</module>
         <module>huan-swagger-ui</module>
         <module>huan-swagger-test</module>
+        <module>swagger-ui-layer</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

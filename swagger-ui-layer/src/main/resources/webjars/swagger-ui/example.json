@@ -1,0 +1,356 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "漫道API Swagger UI示例，展示了UI所支持的一些特性",
+    "version": "1.0",
+    "title": "漫道API Swagger UI示例",
+    "contact": {
+      "name": "huanshare",
+      "url": "https://huanshare.com",
+      "email": "huanshare@live.com"
+    }
+  },
+  "host": "localhost",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "用户模块",
+      "description": "用于用户个人相关的业务操作"
+    },
+    {
+      "name": "展示模块",
+      "description": "用于首页Banner以及其他的广告页"
+    }
+  ],
+  "paths": {
+    "/show/home": {
+      "post": {
+        "tags": [
+          "展示模块"
+        ],
+        "summary": "首页显示",
+        "description": "请求首页显示数据",
+        "operationId": "homeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/ShowHomeModel"
+            }
+          }
+        }
+      }
+    },
+    "/user/findUser/{uid}": {
+      "post": {
+        "tags": [
+          "用户模块"
+        ],
+        "summary": "查找用户",
+        "description": "根据用户ID查找用户",
+        "operationId": "findUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/UserModel"
+            }
+          },
+          "400": {
+            "description": "未知的错误",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "403": {
+            "description": "没有权限查找",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "用户模块"
+        ],
+        "summary": "登录账号",
+        "description": "输入用户名和密码登录账号",
+        "operationId": "loginUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "query",
+            "description": "用户手机号",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "md5pass",
+            "in": "query",
+            "description": "用户密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "400": {
+            "description": "登录错误",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "404": {
+            "description": "登录用户不存在或密码错误",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          }
+        }
+      }
+    },
+    "/user/register": {
+      "post": {
+        "tags": [
+          "用户模块"
+        ],
+        "summary": "注册账号",
+        "description": "输入手机号，姓名，密码注册账号",
+        "operationId": "registerUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "query",
+            "description": "用户手机号",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "用户名称",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "md5pass",
+            "in": "query",
+            "description": "用户密码",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "注册成功",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "400": {
+            "description": "注册错误",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          },
+          "409": {
+            "description": "手机号已被注册",
+            "schema": {
+              "$ref": "#/definitions/BaseModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserModel": {
+      "type": "object",
+      "properties": {
+        "retCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0, 1",
+          "description": "返回码"
+        },
+        "retMsg": {
+          "type": "string",
+          "description": "返回消息"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        },
+        "uname": {
+          "type": "string",
+          "description": "用户名称"
+        },
+        "userMenus": {
+          "type": "array",
+          "description": "用户菜单",
+          "items": {
+            "$ref": "#/definitions/UserMenu"
+          }
+        },
+        "params": {
+          "type": "object",
+          "description": "示例用，将所有传入参数返回",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "用户对象"
+    },
+    "BaseModel": {
+      "type": "object",
+      "properties": {
+        "retCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0, 1",
+          "description": "返回码"
+        },
+        "retMsg": {
+          "type": "string",
+          "description": "返回消息"
+        },
+        "params": {
+          "type": "object",
+          "description": "示例用，将所有传入参数返回",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "基础响应对象"
+    },
+    "Banner": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "Banner点击动作"
+        },
+        "imageurl": {
+          "type": "string",
+          "description": "Banner图片地址"
+        }
+      },
+      "description": "Banner对象"
+    },
+    "ShowHomeModel": {
+      "type": "object",
+      "properties": {
+        "retCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": "0, 1",
+          "description": "返回码"
+        },
+        "retMsg": {
+          "type": "string",
+          "description": "返回消息"
+        },
+        "params": {
+          "type": "object",
+          "description": "示例用，将所有传入参数返回",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "topBanners": {
+          "type": "array",
+          "description": "首页上方Banner列表",
+          "items": {
+            "$ref": "#/definitions/Banner"
+          }
+        },
+        "btmBannerLeft": {
+          "description": "下方左边Banner",
+          "$ref": "#/definitions/Banner"
+        },
+        "btmBannerRight": {
+          "description": "下方右边Banner",
+          "$ref": "#/definitions/Banner"
+        }
+      },
+      "description": "首页显示对象"
+    },
+    "UserMenu": {
+      "type": "object",
+      "properties": {
+        "mid": {
+          "type": "integer",
+          "format": "int32",
+          "description": "菜单ID"
+        },
+        "mname": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "submenus": {
+          "type": "array",
+          "description": "子菜单列表",
+          "items": {
+            "$ref": "#/definitions/UserMenu"
+          }
+        },
+        "url": {
+          "type": "string",
+          "description": "菜单地址"
+        }
+      },
+      "description": "用户菜单"
+    }
+  }
+}
