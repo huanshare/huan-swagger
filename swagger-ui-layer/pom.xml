@@ -20,8 +20,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/huanshare/huan-swagger</url>
         <connection>https://github.com/huanshare/huan-swagger.git</connection>
+        <developerConnection>scm:https://github.com/huanshare/huan-swagger.git</developerConnection>
+        <url>https://github.com/huanshare/huan-swagger/tree/master/swagger-ui-layer</url>
     </scm>
 
     <!--<parent>
@@ -38,7 +39,11 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.github.huanshare</groupId>
+            <artifactId>huan-swagger-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <developers>
         <developer>

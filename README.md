@@ -22,6 +22,19 @@
         <artifactId>huan-swagger-core</artifactId>
         <version>1.0.0</version>
     </dependency>
+    
+ 3、 application.yml配置 (可选项配置)
+ 
+     # Swagger设置  enable 为false时，关闭接口展示
+     swagger:
+       enable: true,
+       version: 版本号
+       title: 项目标题
+       description: 项目描述
+       contact:
+         name: 用户名
+         url: url地址
+         mail: 邮箱
 
  3、页面访问：UI服务器地址/webjars/swagger-ui/index.html#API-服务器地址
  

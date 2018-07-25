@@ -21,7 +21,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  */
 @Configuration
 public class HuanSwagger {
-    @Value("${swagger.enable:false}")
+    @Value("${swagger.enable:true}")
     boolean enable;
     @Value("${swagger.title:API查看器}")
     String title;

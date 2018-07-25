@@ -46,7 +46,7 @@ layui.use(['layer', 'element', 'form', 'nlaytpl', 'nswagger', 'ncmntool', 'uploa
                 ncmntool.checkimg(apidoc.schemes[0] + "://" + apidoc.host + "/logo.png", function (imgurl) {
                     $(".logo img").attr("src", imgurl);
                 });
-                location.hash = apidoc.host;
+                //location.hash = apidoc.host;
                 // 渲染左侧菜单导航
                 nlaytpl.render(".api-main")("comp/tplApiMain.html", {tags: apidoc["tags"]}, function () {
                     // 重新渲染菜单效果
