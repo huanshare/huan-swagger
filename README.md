@@ -25,7 +25,7 @@
     
  3、 application.yml配置 (可选项配置)
  
-     # Swagger设置  enable 为false时，关闭接口展示
+     # Swagger设置  enable 默认为true,为false时，关闭接口展示
      swagger:
        enable: true,
        version: 版本号
