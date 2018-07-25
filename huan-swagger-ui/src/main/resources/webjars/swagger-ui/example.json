@@ -5,9 +5,9 @@
     "version": "1.0",
     "title": "漫道API Swagger UI示例",
     "contact": {
-      "name": "行者",
-      "url": "https://www.baofu.com",
-      "email": "xingzhe@baofu.com"
+      "name": "huanshare",
+      "url": "https://huanshare.com",
+      "email": "huanshare@live.com"
     }
   },
   "host": "localhost",
