@@ -26,7 +26,7 @@
  
  微服务demo实例：http://106.12.9.238:8080/webjars/swagger-ui/index.html#106.12.9.238:8081
 
-## 使用说明
+## 使用说明(spring boot)
  一、微服务版本：
  
  1、部署到服务器上：huan-swagger-ui项目
@@ -92,6 +92,12 @@
           mail: 邮箱
  
   3、页面访问：UI服务器地址/api-doc.html
+ 
+ ## 使用说明(spring mvc)
+ 
+   1、微服务版本：API需要在 spring boot的基础上添加跨域配置，具体可参考 spring-mvc-demo中的CORSFilter与web.xml中的跨域配置
+   
+   2、单服务版本：查看spring-mvc-demo MySwaggerConfig
  
  ## 特点
   
