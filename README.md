@@ -18,11 +18,13 @@
  
  huan-swagger-ui    微服务版本：swagger UI页面，作为一个第三方服务来渲染接口，用来渲染远程服务器的接口说明  （aa.com）
  
- huan-swagger-test  swagger 微服务测试页面  （bb.com）
+ spring-boot-demo  swagger 微服务测试页面  （bb.com）
  
- 访问形式：http://aa.com/webjars/swagger-ui/index.html#http://bb.com
+ spring-mvc-demo   swagger spring mvc单服务测试页面  （bb.com）
  
- demo实例：http://106.12.9.238:8080/webjars/swagger-ui/index.html#106.12.9.238:8081
+ 微服务访问形式：http://aa.com/webjars/swagger-ui/index.html#http://bb.com
+ 
+ 微服务demo实例：http://106.12.9.238:8080/webjars/swagger-ui/index.html#106.12.9.238:8081
 
 ## 使用说明
  一、微服务版本：

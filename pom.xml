@@ -13,8 +13,9 @@
     <modules>
         <module>huan-swagger-core</module>
         <module>huan-swagger-ui</module>
-        <module>huan-swagger-test</module>
         <module>swagger-ui-layer</module>
+        <module>spring-boot-demo</module>
+        <module>spring-mvc-demo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
