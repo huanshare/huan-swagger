@@ -95,9 +95,62 @@
  
  ## 使用说明(spring mvc)
  
-   1、微服务版本：API需要在 spring boot的基础上添加跨域配置，具体可参考 spring-mvc-demo中的CORSFilter与web.xml中的跨域配置
+   1、微服务版本：API需要在 添加pom依赖，需要手动解决跨域问题，具体可参考 spring-mvc-demo中的CORSFilter与web.xml中的跨域配置，
+      可参考 spring-mvc-demo---》CORSFilter
    
-   2、单服务版本：查看spring-mvc-demo MySwaggerConfig
+   1） pom依赖
+      
+        <dependency>
+           <groupId>com.github.huanshare</groupId>
+           <artifactId>huan-swagger-core</artifactId>
+           <version>1.0.1</version>
+       </dependency>
+  2） Bean注入，Filter配置
+        
+        @Configuration
+        @EnableHuanSwagger
+        @EnableWebMvc
+        public class CORSFilter implements Filter {
+        
+            public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+                HttpServletResponse response = (HttpServletResponse) res;
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                chain.doFilter(req, res);
+            }
+        }
+        
+  3） web.xml中配置过滤器
+   
+        <filter>
+            <filter-name>cors</filter-name>
+            <filter-class>com.huanshare.springMvcDemo.config.CORSFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>cors</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+   
+   2、单服务版本：添加pom依赖，注入各种Bean，可参考 spring-mvc-demo --》MySwaggerConfig
+   
+   1） pom依赖
+      
+        <dependency>
+          <groupId>com.github.huanshare</groupId>
+          <artifactId>swagger-ui-layer</artifactId>
+          <version>1.0.0</version>
+        </dependency>
+        
+   2） Bean注入
+         
+            @Configuration
+            @EnableHuanSwagger
+            @EnableWebMvc
+            public class MySwaggerConfig {
+            }
+
  
  ## 特点
   

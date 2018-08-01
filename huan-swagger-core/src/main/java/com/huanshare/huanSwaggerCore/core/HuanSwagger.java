@@ -40,8 +40,7 @@ public class HuanSwagger {
     }
 
     @Bean
-    public Docket allApi() {
-        if (!this.enable) {
+    public Docket allApi() { if (!this.enable) {
             return (new Docket(DocumentationType.SWAGGER_2)).select().apis(RequestHandlerSelectors.none()).paths(PathSelectors.none()).build();
         } else {
             ApiInfo apiInfo = (new ApiInfoBuilder()).title(this.title).description(this.description).contact(new Contact(this.contactName, this.contactUrl, this.contactMail)).version(this.version).build();

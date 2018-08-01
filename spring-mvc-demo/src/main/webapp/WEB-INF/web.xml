@@ -43,12 +43,13 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <filter>
+    <!--配合微服务版本的Filter 拦截-->
+    <!--<filter>
         <filter-name>cors</filter-name>
         <filter-class>com.huanshare.springMvcDemo.config.CORSFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>cors</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 </web-app>

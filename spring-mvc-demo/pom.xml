@@ -69,16 +69,16 @@
         </dependency>
 
 
-       <!-- <dependency>
+        <dependency>
             <groupId>com.github.huanshare</groupId>
             <artifactId>swagger-ui-layer</artifactId>
             <version>1.0.0</version>
-        </dependency>-->
-        <dependency>
+        </dependency>
+       <!-- <dependency>
             <groupId>com.github.huanshare</groupId>
             <artifactId>huan-swagger-core</artifactId>
             <version>1.0.1</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
     <properties>
