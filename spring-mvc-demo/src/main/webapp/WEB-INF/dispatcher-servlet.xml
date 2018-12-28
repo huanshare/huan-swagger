@@ -25,5 +25,6 @@
     </mvc:annotation-driven>
     <!-- 对静态资源文件的访问 -->
     <mvc:default-servlet-handler />
-    <mvc:resources location="classpath:/META-INF/resources/" mapping="/resources/**"/>
+    <mvc:resources mapping="/logo.png" location="/resources/logo.png" />
+
 </beans>

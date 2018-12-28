@@ -1,5 +1,5 @@
 /**
- * Created by sunson on 2017/5/11.
+ * Created by liuhuan on 2017/5/11.
  */
 layui.config({
     base: 'assets/layext/'
