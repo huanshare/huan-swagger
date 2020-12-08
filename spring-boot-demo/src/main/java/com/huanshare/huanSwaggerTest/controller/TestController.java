@@ -1,20 +1,24 @@
 package com.huanshare.huanSwaggerTest.controller;
 
+
+
 import com.huanshare.huanSwaggerTest.controller.dto.GetUserInfoRequestDto;
 import com.huanshare.huanSwaggerTest.controller.dto.GetUserInfoResponseDto;
 import com.huanshare.huanSwaggerTest.controller.dto.UserInfoDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by liuhuan on 2018/7/12 10:05.
@@ -24,7 +28,7 @@ import java.util.List;
 @Api(tags = "查询个人信息", description = "查询个人汇总")
 public class TestController {
 
-    @ApiOperation(notes = "根据姓名模糊匹配用户", value = "根据姓名模糊匹配用户")
+    @ApiOperation(notes = "post json请求", value = "post json请求")
     @RequestMapping(value = "/getUserInfo", method = RequestMethod.POST)
     public ResponseEntity<GetUserInfoResponseDto> openAccount(@RequestBody GetUserInfoRequestDto requestDto) {
         GetUserInfoResponseDto responseDto=new GetUserInfoResponseDto();
@@ -42,5 +46,44 @@ public class TestController {
         }
         responseDto.setUserInfoList(userInfoList);
         return ResponseEntity.ok(responseDto);
+
+
     }
+
+
+    @ApiOperation(notes = "提交form表单", value = "提交form表单")
+    @RequestMapping(value = "/getUserInfo2", method = RequestMethod.POST)
+    public ResponseEntity<GetUserInfoResponseDto> getUserInfo2(GetUserInfoRequestDto requestDto) {
+        return ResponseEntity.ok(new GetUserInfoResponseDto());
+    }
+
+    @ApiOperation(value = "文件上传（MultipartFile+Form表单）", notes = "文件上传（MultipartFile+Form表单）")
+    @PostMapping(value = "/upload", consumes = "multipart/*", headers = "content-type=multipart/form-data")
+    public ResponseEntity<String> upload(@ApiParam(value = "文件上传", required = true) MultipartFile fileHandler, GetUserInfoRequestDto requestDto) {
+        if (fileHandler==null || fileHandler.isEmpty()) {
+            return ResponseEntity.ok("{\"code\":\"-1\",\"msg\":\"文件上传失败！\"}");
+        }
+        System.out.println("name: " + fileHandler.getOriginalFilename() + "  size: " + fileHandler.getSize());
+
+        String pathName = "D:\\image\\";
+        String picFullFileName = pathName + UUID.randomUUID().toString() + "_" + fileHandler.getOriginalFilename();
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(picFullFileName);
+            // 写入文件
+            fos.write(fileHandler.getBytes());
+            return ResponseEntity.ok("{\"code\":\"1\",\"msg\":\"文件上传成功！\"}");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.ok("{\"code\":\"-1\",\"msg\":\"文件上传失败！\"}");
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
