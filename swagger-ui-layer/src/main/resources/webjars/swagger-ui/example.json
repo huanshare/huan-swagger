@@ -1,13 +1,13 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "漫道API Swagger UI示例，展示了UI所支持的一些特性",
+    "description": "API Swagger UI示例，展示了UI所支持的一些特性",
     "version": "1.0",
-    "title": "漫道API Swagger UI示例",
+    "title": "API Swagger UI示例",
     "contact": {
-      "name": "huanshare",
-      "url": "https://huanshare.com",
-      "email": "huanshare@live.com"
+      "name": "XXX",
+      "url": "https://XXX.com",
+      "email": "XXX@live.com"
     }
   },
   "host": "localhost",
